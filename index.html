@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js" defer></script>
+    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+    
+    <div id="app"> 
+        <header>    
+            <h1>Formulario de perfil</h1>
+        </header>
+
+        <div> 
+            <div> 
+                <img src ="/Yo.png" alt="">
+            </div>  
+        </div>
+
+        <div> 
+            <h2> {{usuario}} </h2>
+            <h4>{{ profesion}}</h4>
+        </div>
+
+        <!-- El form se modifica y agrega v-on:submit="guardar" para que pueda funcionar el botón.
+        De igual manera se agregan atributos "action" y "method", en líneas posteriores se agrega "name"
+        para mantener integridad de los valores y éstos puedan funcionar en el server -->
+        <form v-on:reset= "resetear" v-on:submit="guardar" action="/send" method="POST">
+            <div>
+                <div>
+                    <label for ="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre" v-model="nombre">
+
+                    <label for ="apellido">Apellido</label>
+                    <input type="text" name="apellido" id="apellido" v-model="apellido">
+
+                    <label for ="edad">Edad</label>
+                    <input type="number" name="edad" id="edad" v-model="edad">
+                </div>
+
+                <div>
+                    <label for="profesion">Profesión</label>
+                    <input type="text" name="profesion" id="profesion" v-model="profesion">
+
+                    <label for="pais">Pais</label>
+                    <select name="pais" id="pais" v-model="pais">
+                        <option value="México">México</option>
+                        <option value="España">España</option>
+                        <option value="Colombia">Colombia</option>
+                    </select>
+                </div>
+
+                <div>
+                    <p v-if = "usuario">¡Hola! mi nombre es {{ usuario }}, tengo {{ edad }} años, soy {{ profesion }} y vivo en {{ pais }}</p>
+
+                    <label for="firma">Firma</label>
+                    <input type ="text" id="firma" v-model="usuario">
+                </div>
+
+                <div>
+                    <button type="reset">Limpiar Campos</button>
+                    <button type="submit">Guardar</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</body>
+</html>
