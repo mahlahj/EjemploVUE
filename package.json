@@ -1,8 +1,11 @@
 {
-  "name": "EjemploVUE",
+  "name": "ejemplo_vue",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "engines": {
+    "node": "14.5.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js"
